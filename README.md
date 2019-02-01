@@ -10,9 +10,7 @@ For different reasons we want to go another, more mavenized way, which means tha
 to a gradle multi project module (stamm-server, stamm-client, stamm-shared......),
 whereas every content of a previous artifact is migrated to another submodule.
 We also provide bom modules to define which version of which module should be used only once and not to have to
-define this information per submodule. This project is only a part of our hole project (50%),
-so the performance values shown afterwards will be even getting worse.
-Currently this is a show stopper for our intended migration.
+define this information per submodule.
 
 ## How to prepare with local artifactory server
 I have added a docker-compose to setup a local artifactory OSS instance. To reproduce do the following:
