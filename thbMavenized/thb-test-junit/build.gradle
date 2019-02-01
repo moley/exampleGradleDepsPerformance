@@ -1,0 +1,4 @@
+dependencies {
+  compile project(':thb-server')
+  compile project(':thb-test-server')
+}

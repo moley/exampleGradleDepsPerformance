@@ -1,0 +1,7 @@
+
+dependencies {
+  compile 'org.moley.performance:rezept-test-server'
+  compile 'org.moley.performance:stamm-test-tools'
+  compile 'org.moley.performance:marvin-server'
+  compile project(':abrechnung-server')
+}

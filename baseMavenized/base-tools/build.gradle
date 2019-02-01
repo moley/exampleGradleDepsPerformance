@@ -1,0 +1,7 @@
+
+dependencies {
+  compile 'org.moley.performance:marvin-shared'
+  compile 'org.moley.performance:marvincore-testutils'
+  compile 'org.apache.velocity:velocity'
+  compile project (':base-server')
+}

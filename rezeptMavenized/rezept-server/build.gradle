@@ -1,0 +1,10 @@
+
+dependencies {
+  compile 'org.moley.performance:stamm-server'
+  compile 'org.apache.poi:poi'
+  compile 'org.apache.poi:poi-ooxml'
+  compile 'org.apache.poi:poi-ooxml-schemas'
+  compile project (':rezept-model')
+  compile project (':rezept-shared')
+  compileOnly 'org.moley.performance:marvincore-config-generator'
+}

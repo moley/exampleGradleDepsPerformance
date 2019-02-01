@@ -1,0 +1,6 @@
+
+dependencies {
+  compile project(':abrechnung-server')
+  runtime 'org.moley.performance:rezept-service-beans'
+  runtime 'org.moley.performance:thb-service-beans'
+}

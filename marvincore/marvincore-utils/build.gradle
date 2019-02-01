@@ -1,0 +1,5 @@
+dependencies {
+  compile 'concurrent:concurrent'
+  compile 'org.apache.commons:commons-lang3'
+  compile 'log4j:log4j'
+}

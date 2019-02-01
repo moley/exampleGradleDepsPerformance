@@ -1,0 +1,5 @@
+
+dependencies {
+  compile 'org.moley.performance:base-test-server'
+  compile project(':documents-server')
+}

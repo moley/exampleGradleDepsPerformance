@@ -1,0 +1,17 @@
+
+dependencies {
+  compile 'org.moley.performance:marvin-server'
+  compile 'org.moley.performance:marvincore-jboss-logging'
+  compile 'org.moley.performance:marvincore-jboss-security'
+  compile 'javax.mail:mail'
+  compile 'net.sf.jasperreports:jasperreports'
+  compile 'org.bouncycastle:bcprov-jdk15on'
+  compile 'org.jboss.spec.javax.ejb:jboss-ejb-api_3.1_spec'
+  compile 'org.jboss.spec.javax.jms:jboss-jms-api_2.0_spec'
+  compile 'org.jboss:jboss-ejb-client'
+  compile 'org.picketbox:picketbox'
+  compile 'org.springframework:spring-context-support'
+  compile 'org.springframework:spring-web'
+  compile project (':base-annot')
+  compile project(':base-model')
+}

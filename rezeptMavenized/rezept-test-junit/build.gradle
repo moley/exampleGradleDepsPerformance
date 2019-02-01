@@ -1,0 +1,4 @@
+dependencies {
+  compile project(':rezept-server')
+  compile project(':rezept-test-server')
+}

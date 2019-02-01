@@ -1,0 +1,89 @@
+buildscript {
+  repositories {
+    mavenLocal()
+    mavenCentral()
+  }
+  // noinspection GroovyAssignabilityCheck
+  dependencies {
+    classpath 'io.spring.gradle:dependency-management-plugin:1.0.4.RELEASE'
+  }
+}
+
+
+allprojects {
+  repositories {
+    maven { url 'http://localhost/artifactory/libs-release-local'}
+
+    maven {
+      url 'https://maven.repository.redhat.com/ga/'
+    }
+    mavenCentral()
+    mavenLocal()
+  }
+  group = 'org.moley.performance'
+  version = '1.0'
+  
+  apply {
+    plugin 'java'
+    plugin 'io.spring.dependency-management'
+    plugin 'maven-publish'
+  }
+
+  publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url = "http://localhost/artifactory/libs-release-local"
+        }
+    }
+  } 
+  dependencyManagement {
+    // transitive dependencies, not contained within the managing BOMs will be treated like gradle does: the highest compatible version is choosen!
+    overriddenByDependencies = false
+    imports { // EAP7
+      mavenBom 'org.jboss.bom:jboss-eap-javaee7:7.0.7.GA'
+      mavenBom 'org.jboss.eap:wildfly-ejb-client-bom:7.0.7.GA-redhat-3'
+      mavenBom 'org.jboss.eap:wildfly-jms-client-bom:7.0.7.GA-redhat-3'
+      mavenBom 'org.jboss.as:jboss-as-console-bom:2.8.30.Final-redhat-1'
+      mavenBom 'org.wildfly.core:wildfly-io-bom:2.1.17.Final-redhat-1'
+      mavenBom 'com.sun.xml.bind:jaxb-bom-ext:2.2.11.redhat-4'
+      mavenBom 'org.glassfish.jaxb:jaxb-bom:2.2.11.redhat-4'
+      
+      mavenBom 'org.moley.performance:marvincore-jboss-bom:1.0'
+      mavenBom 'org.moley.performance:marvincore-bom:1.0'
+    }
+    dependencies {
+      dependency 'javax:javaee-web-api:7.0'
+      dependency 'javax.resource:javax.resource-api:1.7'
+      dependency 'javax.jms:javax.jms-api:2.0.1'
+      // temporary dependencies
+      dependency 'log4j:log4j:1.2.17'
+      dependency 'junit:junit:4.12'
+      
+      dependency 'jfree:jfreechart:0.9.21'
+      dependency 'javax.servlet.jsp:jsp-api:2.1'
+      dependency 'commons-fileupload:commons-fileupload:1.3.3'
+      dependency 'commons-collections:commons-collections:3.2.2' //version explicitly set due to vulnerability
+      dependency 'org.owasp.esapi:esapi:2.1.0.1'
+      dependency 'org.apache.xmlgraphics:batik-css:1.9.1' //version explicitly ste due to vulnerability
+      dependency 'com.h2database:h2:1.3.176'
+      dependency 'com.oracle:ojdbc6:11.2.0.4'
+
+      dependency 'commons-logging:commons-logging:1.2'
+      dependency 'org.apache.ant:ant:1.8.1' // Aufraeumen, dann kann das weg
+      dependency 'org.assertj:assertj-core:3.10.0'
+
+      dependencySet(group: 'org.slf4j', version: '1.7.25') {
+        entry 'slf4j-api'
+        entry 'log4j-over-slf4j'
+        entry 'slf4j-jdk14'
+      }
+
+    }
+  }
+}
+

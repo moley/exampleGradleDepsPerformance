@@ -1,0 +1,63 @@
+buildscript {
+  repositories {
+    mavenLocal()
+    mavenCentral()
+  }
+  // noinspection GroovyAssignabilityCheck
+  dependencies {
+    classpath 'io.spring.gradle:dependency-management-plugin:1.0.4.RELEASE'
+  }
+}
+
+
+allprojects {
+  repositories {    
+    maven { url 'http://localhost/artifactory/libs-release-local'}
+
+    mavenCentral()
+    mavenLocal()
+    maven { url 'https://repository.mulesoft.org/nexus/content/repositories/public/'}
+    maven { url 'https://maven.repository.redhat.com/ga/'}
+    maven { url 'https://repository.jboss.org/' }
+  }
+  group = 'org.moley.performance'
+  version = '1.0'
+
+  apply {
+    plugin 'java'
+    plugin 'io.spring.dependency-management'
+    plugin 'maven-publish'
+  }
+
+  publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url = "http://localhost/artifactory/libs-release-local"
+        }
+    }
+  }
+  dependencyManagement {
+
+
+  dependencies {
+
+    dependency 'jaxen:jaxen:1.1.6'                                             
+    dependency 'net.lingala.zip4j:zip4j:1.3.2'
+    dependency 'net.sourceforge.barbecue:barbecue:1.5-beta1'
+    dependency 'xmlunit:xmlunit:1.6'
+ 
+  }
+    imports {
+    mavenBom 'org.moley.performance:thb-bom:1.0'
+    mavenBom 'org.moley.performance:rezept-bom:1.0'
+    mavenBom 'org.moley.performance:base-bom:1.0'
+    mavenBom 'org.moley.performance:documents-bom:1.0'
+    mavenBom 'org.moley.performance:stamm-bom:1.0'
+    }
+  }
+}

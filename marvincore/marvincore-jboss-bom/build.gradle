@@ -1,0 +1,10 @@
+apply from: '../marvincore-bom/build.gradle'
+
+dependencies {
+  compile project (':marvincore-jboss:marvincore-jboss-security')
+  compile project (':marvincore-jboss:marvincore-jboss-logging')
+  compile project (':marvincore-jboss:bootstrap-ejb-interceptor')
+  compile project (':marvincore-jboss:client-ejb-loggingpropagation-interceptor')
+  compile project (':marvincore-jboss:client-ejb-security-interceptor')
+}
+

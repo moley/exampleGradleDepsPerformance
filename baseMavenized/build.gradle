@@ -1,0 +1,95 @@
+buildscript {
+  repositories {
+    mavenLocal()
+    mavenCentral()
+  }
+  // noinspection GroovyAssignabilityCheck
+  dependencies {
+    classpath 'io.spring.gradle:dependency-management-plugin:1.0.4.RELEASE'
+  }
+}
+
+
+allprojects {
+  repositories {
+    maven { url 'http://localhost/artifactory/libs-release-local'}
+    mavenCentral()
+    maven { url 'https://repository.mulesoft.org/nexus/content/repositories/public/'}
+    maven { url 'https://maven.repository.redhat.com/ga/'}
+    maven { url 'https://repository.jboss.org/' }
+    mavenLocal()
+  }
+  group = 'org.moley.performance'
+  version = '1.0'
+
+  apply {
+    plugin 'java'
+    plugin 'io.spring.dependency-management'
+    plugin 'maven-publish'
+  }
+
+  publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url = "http://localhost/artifactory/libs-release-local"
+        }
+    }
+}
+  dependencyManagement {
+
+    imports {
+      // JBoss-Version in der BOM-Notation
+      // ACHTUNG: �nderungen in der JBoss-Version m�ssen auch im Plugin in DivaDsl.groovy (jbossRepositoryVersion) vorgenommen werden
+      mavenBom 'org.jboss.bom:jboss-eap-javaee7:7.0.8.GA'
+      mavenBom 'org.jboss.eap:wildfly-ejb-client-bom:7.0.8.GA-redhat-1'
+      mavenBom 'org.jboss.eap:wildfly-jms-client-bom:7.0.8.GA-redhat-1'
+      mavenBom 'org.wildfly.core:wildfly-io-bom:2.1.18.Final-redhat-1'
+      mavenBom 'org.jboss.as:jboss-as-console-bom:2.8.30.Final-redhat-1'
+      mavenBom 'org.infinispan:infinispan-bom:8.1.8.Final-redhat-1'
+      mavenBom 'org.moley.performance:marvincore-jboss-bom:1.0'
+      mavenBom 'org.moley.performance:marvin-jboss-swing-bom:1.0'
+    }
+
+    dependencies {
+      dependency 'commons-collections:commons-collections:3.2.2'
+      dependency 'de.nhc.diva:jboss:4.1-SNAPSHOT-1805151409'
+      dependency 'io.swagger:swagger-core:1.5.10'
+      dependency 'io.swagger:swagger-jaxrs:1.5.10'
+      dependency 'io.swagger:swagger-models:1.5.10'
+      dependency 'javax.mail:mail:1.4.7'
+      dependency 'javax.ws.rs:javax.ws.rs-api:2.0.1'
+      dependency 'log4j:log4j:1.2.17'
+      dependency 'org.apache.commons:commons-pool2:2.5.0'
+      dependency 'org.apache.velocity:velocity:1.7'
+      dependency 'org.bouncycastle:bcprov-jdk15on:1.55'
+      dependency 'org.jboss.as:jboss-as-webservices:7.5.12.Final-redhat-1'
+      dependency 'org.jboss.ejb3:jboss-ejb3-ext-api:2.1.0.redhat-1'           // security annotations, werden in anderen Modulen f�r die Service-Generatoren ben�tigt
+      dependency 'org.jboss.spec.javax.ejb:jboss-ejb-api_3.1_spec:1.0.2.Final-redhat-3'
+      dependency 'org.jboss.spec.javax.interceptor:jboss-interceptors-api_1.2_spec:1.0.0.Final-redhat-1'
+      dependency 'org.jboss.spec.javax.jms:jboss-jms-api_2.0_spec:1.0.1.Final-redhat-1'
+      dependency 'org.jboss.spec.javax.xml.rpc:jboss-jaxrpc-api_1.1_spec:1.0.1.Final-redhat-5'
+      dependency 'org.slf4j:slf4j-log4j12:1.7.21'
+      dependency 'org.springframework.ldap:spring-ldap-core:2.3.1.RELEASE'
+      dependency 'org.springframework:spring-context-support:4.3.4.RELEASE'
+      dependency 'org.springframework:spring-context:4.3.4.RELEASE'
+      dependency 'org.springframework:spring-jdbc:4.3.4.RELEASE'
+      dependency 'org.springframework:spring-jms:4.3.4.RELEASE'
+      dependency 'org.springframework:spring-web:4.3.4.RELEASE'
+      dependency ('net.sf.jasperreports:jasperreports:6.4.0') {
+        exclude 'bouncycastle:bcmail-jdk14'
+        exclude 'bouncycastle:bcprov-jdk14'
+        exclude 'bouncycastle:bctsp-jdk14'
+        exclude 'org.bouncycastle:bcprov-jdk14'
+        exclude 'org.bouncycastle:bctsp-jdk14'
+        exclude 'org.codehaus.castor:castor-xml'
+        exclude 'com.lowagie:itext'
+        exclude 'org.olap4j:olap4j'
+      }
+    }
+  }
+}

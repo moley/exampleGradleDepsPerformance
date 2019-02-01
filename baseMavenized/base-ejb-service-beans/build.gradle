@@ -1,0 +1,6 @@
+
+dependencies {
+  compile 'org.moley.performance:marvin-beans'
+  compile project(':base-server')
+  compile project(':base-trbh-replicator')
+}

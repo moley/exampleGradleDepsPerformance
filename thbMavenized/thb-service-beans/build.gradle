@@ -1,0 +1,5 @@
+
+dependencies {
+  compile project(':thb-server')
+  runtime 'org.moley.performance:stamm-service-beans'
+}

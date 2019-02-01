@@ -1,0 +1,6 @@
+dependencies {
+  compile project(':marvincore-shared')
+  compile project (':marvincore-security:marvincore-security-client')
+  compile project(':marvincore-config:marvincore-config-shared')
+}
+

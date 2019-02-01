@@ -1,0 +1,12 @@
+dependencyManagement {
+dependencies {
+  dependency ('org.moley.performance:stamm-shared:1.0')
+  dependency ('org.moley.performance:stamm-install:1.0')
+  dependency ('org.moley.performance:stamm-restservice-war:1.0')
+  dependency ('org.moley.performance:stamm-server:1.0')
+  dependency ('org.moley.performance:stamm-service-beans:1.0')
+  dependency ('org.moley.performance:stamm-test-junit:1.0')
+  dependency ('org.moley.performance:stamm-test-tools:1.0')
+  dependency ('org.moley.performance:stamm-webservice-war:1.0')
+}
+}

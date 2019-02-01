@@ -1,0 +1,4 @@
+dependencies {
+  compile project(':rezept-server')
+  runtime 'org.moley.performance:stamm-service-beans'
+}

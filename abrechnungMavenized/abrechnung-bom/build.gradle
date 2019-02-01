@@ -1,0 +1,15 @@
+
+dependencyManagement {
+dependencies {
+  dependency ('org.moley.performance:abrechnung-shared:1.0')
+  dependency ('org.moley.performance:abrechnung-dta-webservice:1.0')
+  dependency ('org.moley.performance:abrechnung-resources:1.0')
+  dependency ('org.moley.performance:abrechnung-rest-dtaservice:1.0')
+  dependency ('org.moley.performance:abrechnung-server:1.0')
+  dependency ('org.moley.performance:abrechnung-service-beans:1.0')
+  dependency ('org.moley.performance:abrechnung-test-junit:1.0')
+  dependency ('org.moley.performance:abrechnung-test-server:1.0')
+  dependency ('org.moley.performance:abrechnung-test-tools:1.0')
+  dependency ('org.moley.performance:abrechnung-trbh-webservice:1.0')
+}
+}

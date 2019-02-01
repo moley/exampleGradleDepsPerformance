@@ -1,0 +1,8 @@
+dependencies {
+  compile project(':marvin-shared')
+  compile 'org.moley.performance:marvincore-server'
+  compile 'org.moley.performance:marvincore-security-server'
+  compile 'org.moley.performance:marvincore-persist-server'
+  runtime 'org.moley.performance:marvincore-dev'
+}
+

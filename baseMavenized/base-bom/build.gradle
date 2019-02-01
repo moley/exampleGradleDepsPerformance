@@ -1,0 +1,21 @@
+dependencyManagement {
+  dependencies {
+    dependency('org.moley.performance:base-client:1.0')
+    dependency('org.moley.performance:base-clientinfo-war:1.0')
+    dependency('org.moley.performance:base-dlq-war:1.0')
+    dependency('org.moley.performance:base-ejb-service-beans:1.0')
+    dependency('org.moley.performance:base-javax-print-patch:1.0')
+    dependency('org.moley.performance:base-server:1.0')
+    dependency('org.moley.performance:base-serverinfo-war:1.0')
+    dependency('org.moley.performance:base-service-beans:1.0')
+    dependency('org.moley.performance:base-shared:1.0')
+    dependency('org.moley.performance:base-sun-print-patch:1.0')
+    dependency('org.moley.performance:base-system-war:1.0')
+    dependency('org.moley.performance:base-test-server:1.0')
+    dependency('org.moley.performance:base-test-service-beans:1.0')
+    dependency('org.moley.performance:base-test-shared:1.0')
+    dependency('org.moley.performance:base-tools:1.0')
+    dependency('org.moley.performance:base-trbh-replicator:1.0')
+    dependency('org.moley.performance:base-webservice-war:1.0')
+  }
+}

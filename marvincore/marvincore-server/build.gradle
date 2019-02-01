@@ -1,0 +1,14 @@
+
+dependencies {
+  compile project(':marvincore-shared')
+  compile 'regexp:regexp' 
+  compile 'log4j:log4j'
+  compile 'commons-beanutils:commons-beanutils'
+  compile 'org.springframework:spring-jms' 
+  compile 'org.springframework.ldap:spring-ldap-core'
+  compile 'net.java.dev.jna:jna' 
+  compile 'org.antlr:antlr'
+  compile project (':marvincore-persist:marvincore-persist-generator')
+  compile project (':marvincore-config:marvincore-config-generator')
+  testRuntime project(':marvincore-dev') 
+}

@@ -1,0 +1,12 @@
+dependencyManagement {
+ dependencies {
+  dependency('org.moley.performance:documents-test-tools:1.0')
+  dependency('org.moley.performance:documents-client:1.0')
+  dependency('org.moley.performance:documents-server:1.0')
+  dependency('org.moley.performance:documents-service-beans:1.0')
+  dependency('org.moley.performance:documents-shared:1.0')
+  dependency('org.moley.performance:documents-test-server:1.0')
+  dependency('org.moley.performance:documents-test-service-beans:1.0')
+  dependency('org.moley.performance:documents-webservice:1.0')
+ } 
+}

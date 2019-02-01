@@ -1,0 +1,56 @@
+buildscript {
+  repositories {
+    mavenLocal()
+    mavenCentral()
+  }
+  // noinspection GroovyAssignabilityCheck
+  dependencies {
+    classpath 'io.spring.gradle:dependency-management-plugin:1.0.4.RELEASE'
+  }
+}
+
+
+allprojects {
+  repositories {
+    maven { url 'http://localhost/artifactory/libs-release-local'}
+
+    mavenCentral()
+    mavenLocal()
+    maven { url 'https://repository.mulesoft.org/nexus/content/repositories/public/'}
+    maven { url 'https://maven.repository.redhat.com/ga/'}
+    maven { url 'https://repository.jboss.org/' }
+  }
+  group = 'org.moley.performance'
+  version = '1.0'
+
+  apply {
+    plugin 'java'
+    plugin 'io.spring.dependency-management'
+    plugin 'maven-publish'
+  }
+
+  publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url = "http://localhost/artifactory/libs-release-local"
+        }
+    }
+  }
+  dependencyManagement {
+
+
+  dependencies {
+    dependency 'com.google.zxing:javase:3.3.0'
+    dependency 'org.apache.pdfbox:pdfbox:2.0.11'
+    dependency 'org.apache.pdfbox:fontbox:2.0.11'
+  }
+  imports {
+    mavenBom 'org.moley.performance:base-bom:1.0'
+    }
+  }
+}

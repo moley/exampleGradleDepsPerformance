@@ -1,0 +1,7 @@
+dependencies {
+  compile project (':marvincore-security:marvincore-security-shared')
+  compile project (':marvincore-session:marvincore-session-shared')
+  compile project (':marvincore-config:marvincore-config-shared')
+  testCompile 'javax.ejb:javax.ejb-api'
+  compile 'org.springframework:spring-context'
+}

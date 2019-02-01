@@ -1,0 +1,10 @@
+dependencies {
+  compile project (':marvincore-persist:marvincore-persist-shared')
+  compile project (':marvincore-utils')
+  compile project (':marvincore-service:marvincore-service-shared')
+  compile project (':marvincore-config:marvincore-config-shared')
+  compile project (':marvincore-session:marvincore-session-shared')
+  compile 'org.antlr:antlr'
+  compile 'commons-beanutils:commons-beanutils'
+  compile 'commons-codec:commons-codec'
+}

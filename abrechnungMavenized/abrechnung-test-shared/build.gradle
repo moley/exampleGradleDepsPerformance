@@ -1,0 +1,5 @@
+
+dependencies {
+  compile project (':abrechnung-shared')
+  compile project (':abrechnung-test-model')
+}

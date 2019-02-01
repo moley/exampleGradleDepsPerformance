@@ -1,0 +1,6 @@
+dependencies {
+  compile project (':marvincore-security:marvincore-security-shared')
+  compile project (':marvincore-persist:marvincore-persist-ee')
+  compile 'org.springframework.ldap:spring-ldap-core'
+  runtime project(':marvincore-dev') 
+}

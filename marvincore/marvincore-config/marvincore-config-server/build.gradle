@@ -1,0 +1,8 @@
+dependencies {
+  compile project (':marvincore-utils')
+  compile project (':marvincore-persist:marvincore-persist-generator')
+  compile project (':marvincore-security:marvincore-security-shared')
+  compile project (':marvincore-config:marvincore-config-shared')
+  compile project (':marvincore-persist:marvincore-persist-server')
+  compile 'log4j:log4j'
+}

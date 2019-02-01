@@ -1,0 +1,10 @@
+
+dependencies {
+  compile 'org.moley.performance:base-tools'
+  compile 'org.moley.performance:documents-test-server'
+  compile 'org.moley.performance:rezept-test-tools'
+  compile 'org.moley.performance:thb-test-tools'
+  compile 'xmlunit:xmlunit'
+  compile project (':abrechnung-test-server')
+  compile project(':abrechnung-server')
+}

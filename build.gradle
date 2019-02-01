@@ -1,0 +1,123 @@
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+}
+
+apply {
+  plugin 'java'
+}
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  compile gradleApi () //to enable remote debugging
+  compile localGroovy()
+}
+
+////Upload to local
+task uploadLocalMarvincore(type: GradleBuild) {
+  buildFile = 'marvincore/build.gradle'
+  tasks = ['publishToMavenLocal']
+}
+
+task uploadLocalMarvin(type: GradleBuild) {
+  mustRunAfter 'uploadLocalMarvincore'
+  buildFile = 'marvin/build.gradle'
+  tasks = ['publishToMavenLocal']
+}
+
+task uploadLocalAbrechnung(type: GradleBuild) {
+  mustRunAfter 'uploadLocalThb'
+  buildFile = 'abrechnungMavenized/build.gradle'
+  tasks = ['publishToMavenLocal']
+}
+
+task uploadLocalBase(type: GradleBuild) {
+  mustRunAfter 'uploadLocalMarvin'
+  buildFile = 'baseMavenized/build.gradle'
+  tasks = ['publishToMavenLocal']
+}
+
+task uploadLocalDocuments(type: GradleBuild) {
+  mustRunAfter 'uploadLocalBase'
+  buildFile = 'documentsMavenized/build.gradle'
+  tasks = ['publishToMavenLocal']
+}
+
+task uploadLocalRezept(type: GradleBuild) {
+  mustRunAfter 'uploadLocalStamm'
+  buildFile = 'rezeptMavenized/build.gradle'
+  tasks = ['publishToMavenLocal']
+}
+
+task uploadLocalStamm(type: GradleBuild) {
+  mustRunAfter 'uploadLocalDocuments'
+  buildFile = 'stammMavenized/build.gradle'
+  tasks = ['publishToMavenLocal']
+}
+
+task uploadLocalThb(type: GradleBuild) {
+  mustRunAfter 'uploadLocalRezept'
+  buildFile = 'thbMavenized/build.gradle'
+  tasks = ['publishToMavenLocal']
+}
+////Real upload
+task uploadMarvincore(type: GradleBuild) {
+  buildFile = 'marvincore/build.gradle'
+  tasks = ['publish']
+}
+
+task uploadMarvin(type: GradleBuild) {
+  mustRunAfter 'uploadMarvincore'
+  buildFile = 'marvin/build.gradle'
+  tasks = ['publish']
+}
+
+task uploadAbrechnung(type: GradleBuild) {
+  mustRunAfter 'uploadThb'
+  buildFile = 'abrechnungMavenized/build.gradle'
+  tasks = ['publish']
+}
+
+task uploadBase(type: GradleBuild) {
+  mustRunAfter 'uploadMarvin'
+  buildFile = 'baseMavenized/build.gradle'
+  tasks = ['publish']
+}
+
+task uploadDocuments(type: GradleBuild) {
+  mustRunAfter 'uploadBase'
+  buildFile = 'documentsMavenized/build.gradle'
+  tasks = ['publish']
+}
+
+task uploadRezept(type: GradleBuild) {
+  mustRunAfter 'uploadStamm'
+  buildFile = 'rezeptMavenized/build.gradle'
+  tasks = ['publish']
+}
+
+task uploadStamm(type: GradleBuild) {
+  mustRunAfter 'uploadDocuments'
+  buildFile = 'stammMavenized/build.gradle'
+  tasks = ['publish']
+}
+
+task uploadThb(type: GradleBuild) {
+  mustRunAfter 'uploadRezept'
+  buildFile = 'thbMavenized/build.gradle'
+  tasks = ['publish']
+}
+
+
+task prepareUploadLocal {
+  dependsOn 'uploadLocalMarvincore', 'uploadLocalMarvin', 'uploadLocalBase', 'uploadLocalDocuments', 
+            'uploadLocalStamm', 'uploadLocalRezept', 'uploadLocalThb', 'uploadLocalAbrechnung'
+}
+
+task prepareUpload {
+  dependsOn 'uploadMarvincore', 'uploadMarvin', 'uploadBase', 'uploadDocuments', 'uploadStamm', 'uploadRezept', 'uploadThb', 'uploadAbrechnung'
+}

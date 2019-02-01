@@ -1,0 +1,4 @@
+dependencies {
+  compile 'org.moley.performance:documents-shared'
+  compile project (':stamm-model')
+}

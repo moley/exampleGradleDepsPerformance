@@ -1,0 +1,6 @@
+
+dependencies {
+  compile project(':base-server')
+  compile project(':base-test-shared')
+}
+

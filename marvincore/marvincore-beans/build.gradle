@@ -1,0 +1,8 @@
+dependencies {
+  compile project(':marvincore-server')
+  compile project(':marvincore-shared')
+  compile project (':marvincore-persist:marvincore-persist-server')
+  compile project(':marvincore-persist:marvincore-persist-ee')
+  compile project(':marvincore-security:marvincore-security-server')  
+}
+

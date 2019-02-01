@@ -1,0 +1,6 @@
+dependencies {
+  compile 'org.moley.performance:stamm-server'
+  compile project (':thb-model')
+  compile project (':thb-shared')
+  compile project(':thb-model')
+}

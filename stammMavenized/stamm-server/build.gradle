@@ -1,0 +1,6 @@
+dependencies {
+  compile 'org.moley.performance:documents-server'
+  compile 'org.moley.performance:documents-shared'
+  compile 'org.quartz-scheduler:quartz'
+  compile project (':stamm-shared')
+}

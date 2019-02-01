@@ -1,0 +1,4 @@
+dependencies {
+  compile project (':marvincore-persist:marvincore-persist-server')
+  compile project (':marvincore-config:marvincore-config-generator')
+}

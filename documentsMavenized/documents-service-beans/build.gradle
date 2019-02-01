@@ -1,0 +1,4 @@
+dependencies {
+  compile project(':documents-server')
+  runtime 'org.moley.performance:base-service-beans'
+}

@@ -1,0 +1,10 @@
+dependencies {
+  compile project(':marvin-shared')
+  compile 'commons-fileupload:commons-fileupload' 
+  compile 'commons-io:commons-io' 
+  compile 'commons-codec:commons-codec' 
+  compile 'org.apache.httpcomponents:httpclient' 
+  compile 'org.moley.performance:marvincore-config-shared'
+  compile 'org.moley.performance:marvincore-service-shared'
+  compile 'org.moley.performance:marvincore-security-client'
+}

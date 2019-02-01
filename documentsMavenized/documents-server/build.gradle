@@ -1,0 +1,7 @@
+dependencies {
+  compile 'com.google.zxing:javase'
+  compile 'org.moley.performance:base-server'
+  compile 'org.apache.pdfbox:fontbox'
+  compile 'org.apache.pdfbox:pdfbox'
+  compile project(':documents-shared')
+}

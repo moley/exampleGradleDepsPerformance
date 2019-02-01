@@ -1,0 +1,52 @@
+buildscript {
+  repositories {
+    mavenLocal()
+    mavenCentral()
+  }
+  // noinspection GroovyAssignabilityCheck
+  dependencies {
+    classpath 'io.spring.gradle:dependency-management-plugin:1.0.4.RELEASE'
+  }
+}
+
+
+allprojects {
+  repositories {
+    mavenCentral()
+    maven { url 'http://localhost/artifactory/libs-release-local'}
+    maven { url 'https://repository.mulesoft.org/nexus/content/repositories/public/'}
+    maven { url 'https://maven.repository.redhat.com/ga/'}
+    maven { url 'https://repository.jboss.org/' }
+    mavenLocal()
+  }
+  group = 'org.moley.performance'
+  version = '1.0'
+
+  apply {
+    plugin 'java'
+    plugin 'io.spring.dependency-management'
+    plugin 'maven-publish'
+  }
+
+  publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url = "http://localhost/artifactory/libs-release-local"
+        }
+    }
+  }
+  dependencyManagement {
+    dependencies {
+      dependency 'org.quartz-scheduler:quartz:2.2.1'
+    }
+    imports {
+      mavenBom 'org.moley.performance:base-bom:1.0'
+      mavenBom 'org.moley.performance:documents-bom:1.0'
+    }
+  }
+}

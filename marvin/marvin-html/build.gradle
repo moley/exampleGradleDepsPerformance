@@ -1,0 +1,5 @@
+dependencies {
+  compile project(':marvin-shared')
+  compile project(':marvin-server')
+  compile project(':marvin-client')
+}

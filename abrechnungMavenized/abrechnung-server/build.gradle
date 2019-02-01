@@ -1,0 +1,19 @@
+
+dependencies {
+  compile 'commons-collections:commons-collections'
+  compile 'commons-io:commons-io'
+  compile 'org.moley.performance:rezept-server'
+  compile 'org.moley.performance:rezept-shared'
+  compile 'org.moley.performance:stamm-server'
+  compile 'org.moley.performance:thb-server'
+  compile 'org.moley.performance:thb-shared'
+  compile 'commons-codec:commons-codec'
+  compile 'org.moley.performance:base-sun-print-patch'
+  compile 'net.lingala.zip4j:zip4j'
+  compile 'net.sf.jasperreports:jasperreports'
+  compile project (':abrechnung-model')
+  compile project (':abrechnung-shared')
+  compile project(':abrechnung-model')
+  runtime 'jaxen:jaxen'
+}
+

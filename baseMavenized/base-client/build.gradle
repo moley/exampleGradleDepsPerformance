@@ -1,0 +1,6 @@
+dependencies {
+  compile 'org.moley.performance:marvin-client'
+  compile project(':base-shared')
+  runtime 'org.jboss.eap:wildfly-ejb-client-bom'
+  runtime 'org.jboss.eap:wildfly-jms-client-bom'
+}

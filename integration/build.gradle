@@ -1,0 +1,71 @@
+buildscript {
+  repositories {
+    maven { url "http://repo.intra.vsa.de:8081/artifactory/maven/" }
+    ivy { url "http://repo.intra.vsa.de:8081/artifactory/ivy/" }
+    mavenCentral()
+    maven { url 'https://repo.spring.io/libs-snapshot' }
+    maven { url 'https://repo.spring.io/plugins-snapshot' }
+  }
+  dependencies {
+    classpath "org.springframework.boot:spring-boot-gradle-plugin:2.1.0.M3"
+    classpath "io.spring.gradle:dependency-management-plugin:1.0.7.BUILD-SNAPSHOT"
+  }
+}
+
+repositories {
+    maven { url 'http://localhost/artifactory/libs-release-local'} //TODO disable to check performance with mavenlocal
+    mavenCentral()
+    //maven { url 'https://repository.mulesoft.org/nexus/content/repositories/public/'}
+    maven { url 'https://maven.repository.redhat.com/ga/'}
+    maven { url 'https://repository.jboss.org/' }
+    //mavenLocal()   //TODO enable to check performance with mavenlocal
+  }
+  group = 'org.moley.performance'
+  version = '1.0'
+
+  apply {
+    plugin 'java'
+    plugin 'io.spring.dependency-management'
+  }
+
+  dependencyManagement {
+
+    dependencies {
+      dependency 'org.powermock:powermock-module-test-mockito-junit4:1.4.10' 
+    }
+    imports {
+      mavenBom 'org.moley.performance:marvincore-jboss-bom:1.0'
+      mavenBom 'org.moley.performance:marvin-jboss-swing-bom:1.0'
+      mavenBom 'org.moley.performance:base-bom:1.0'
+      mavenBom 'org.moley.performance:documents-bom:1.0'
+      mavenBom 'org.moley.performance:stamm-bom:1.0'
+      mavenBom 'org.moley.performance:thb-bom:1.0'
+      mavenBom 'org.moley.performance:rezept-bom:1.0'
+      mavenBom 'org.moley.performance:abrechnung-bom:1.0'
+    }
+  }
+
+  dependencies {
+    compile 'org.moley.performance:marvincore-server'
+    compile 'org.moley.performance:marvin-server'
+    compile 'org.moley.performance:base-server'
+    compile 'org.moley.performance:documents-server'
+    compile 'org.moley.performance:stamm-server'
+    compile 'org.moley.performance:thb-server'
+    compile 'org.moley.performance:rezept-server'
+    compile 'org.moley.performance:abrechnung-rest-dtaservice'
+    compile 'org.moley.performance:abrechnung-server'
+    compile 'org.moley.performance:abrechnung-service-beans'
+    compile 'org.moley.performance:abrechnung-test-junit'
+    compile 'org.moley.performance:abrechnung-test-server'
+    compile 'org.moley.performance:abrechnung-test-tools'
+    compile 'org.moley.performance:abrechnung-trbh-webservice'
+  }
+
+task resolve {
+  doFirst {
+
+    repositories.each {println it.name}
+    println configurations.runtime.files.toString().replace(",", "\n")
+  }
+}

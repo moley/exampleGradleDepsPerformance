@@ -1,0 +1,10 @@
+dependencyManagement {
+dependencies {
+  dependency ('org.moley.performance:rezept-shared:1.0')
+  dependency ('org.moley.performance:rezept-server:1.0')
+  dependency ('org.moley.performance:rezept-service-beans:1.0')
+  dependency ('org.moley.performance:rezept-test-junit:1.0')
+  dependency ('org.moley.performance:rezept-test-server:1.0')
+  dependency ('org.moley.performance:rezept-test-tools:1.0')
+}
+}

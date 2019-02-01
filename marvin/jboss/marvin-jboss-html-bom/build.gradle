@@ -1,0 +1,13 @@
+
+dependencyManagement {
+dependencies {
+  dependency('org.moley.performance:marvin-beans:1.0')
+  dependency('org.moley.performance:marvin-client:1.0')
+  dependency('org.moley.performance:marvin-dev:1.0')
+  dependency('org.moley.performance:marvin-html:1.0')
+  dependency('org.moley.performance:marvin-server:1.0')
+  dependency('org.moley.performance:marvin-model:1.0')
+  dependency('org.moley.performance:marvin-shared:1.0')
+  dependency('org.moley.performance:marvin-workflowgen:1.0')
+}
+}

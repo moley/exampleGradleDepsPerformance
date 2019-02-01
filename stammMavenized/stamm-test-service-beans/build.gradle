@@ -1,0 +1,4 @@
+dependencies {
+  compile project (':stamm-test-server')
+  runtime project (':stamm-service-beans')
+}

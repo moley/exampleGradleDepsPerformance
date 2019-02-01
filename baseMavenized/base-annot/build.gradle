@@ -1,0 +1,11 @@
+dependencies {
+  compile 'org.moley.performance:marvin-shared'
+  compile 'org.moley.performance:marvincore-jboss-security'
+  compile 'org.moley.performance:marvincore-server'
+  compile 'org.apache.velocity:velocity'
+  compile 'org.jboss.ejb3:jboss-ejb3-ext-api'
+  compile 'org.jboss.spec.javax.annotation:jboss-annotations-api_1.2_spec'
+  compile 'org.jboss.spec.javax.ejb:jboss-ejb-api_3.1_spec'
+  compile 'org.jboss.spec.javax.interceptor:jboss-interceptors-api_1.2_spec'
+  compile 'org.jboss.spec.javax.jms:jboss-jms-api_2.0_spec'
+}

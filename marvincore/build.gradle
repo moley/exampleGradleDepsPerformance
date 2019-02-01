@@ -1,0 +1,114 @@
+buildscript {
+  repositories {
+    mavenLocal()
+    mavenCentral()
+  }
+  // noinspection GroovyAssignabilityCheck
+  dependencies {
+    classpath 'io.spring.gradle:dependency-management-plugin:1.0.4.RELEASE'
+  }
+}
+
+
+allprojects {
+  repositories {
+    maven { url 'http://localhost/artifactory/libs-release-local'} 
+    maven {
+      url 'https://maven.repository.redhat.com/ga/'
+    }
+    mavenCentral()
+    mavenLocal()
+  }
+  group = 'org.moley.performance'
+  version = '1.0'
+
+  apply {
+    plugin 'java'
+    plugin 'io.spring.dependency-management'
+    plugin 'maven-publish'
+  }
+
+  publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url = "http://localhost/artifactory/libs-release-local"
+        }
+    }
+}
+  dependencyManagement {
+    imports {
+      // JBoss EAP 7
+      mavenBom 'org.jboss.bom:jboss-eap-javaee7:7.0.7.GA'
+      mavenBom 'org.jboss.eap:wildfly-ejb-client-bom:7.0.7.GA-redhat-3'
+      mavenBom 'org.jboss.eap:wildfly-jms-client-bom:7.0.7.GA-redhat-3'
+      mavenBom 'org.jboss.as:jboss-as-console-bom:2.8.30.Final-redhat-1'
+      mavenBom 'org.wildfly.core:wildfly-io-bom:2.1.17.Final-redhat-1'
+      
+      // otter
+      mavenBom 'com.sun.xml.bind:jaxb-bom-ext:2.2.11.redhat-4'
+      mavenBom 'org.glassfish.jaxb:jaxb-bom:2.2.11.redhat-4'
+
+    }
+    dependencies {
+      // Spec
+      dependency 'javax:javaee-web-api:7.0'
+      dependency 'javax.ejb:javax.ejb-api:3.2'
+      dependency 'javax.interceptor:javax.interceptor-api:3.1'
+      dependency 'javax.resource:javax.resource-api:1.7'
+      dependency 'javax.jms:javax.jms-api:2.0.1'
+      dependency 'javax.annotation:jsr250-api:1.0'
+
+      // Payara
+      dependency 'org.glassfish.main.ejb:ejb-client:4.1.2'
+      dependency 'org.glassfish.main.appclient:gf-client:4.1.2'
+      dependency 'org.glassfish.main.security:security:4.1.2'
+      dependency 'org.glassfish.main.security:security-ee:4.1.2'
+      dependency 'org.glassfish.main.common:glassfish-ee-api:4.1.2'
+
+      // legacy ?
+      dependency 'org.apache.ant:ant:1.8.1' // Aufraeumen, dann kann das weg
+      dependency 'org.apache.ant:ant-nodeps:1.8.1' //Aufraeumen, dann kann das weg
+      dependency 'org.apache.commons:commons-lang3:3.4'
+      // externe module
+      dependency 'log4j:log4j:1.2.17'
+      dependency 'commons-configuration:commons-configuration:1.10' // ServicesXMLConfigAnalyzer
+      dependency 'com.google.guava:guava:18.0' // needed by reflections, but 15.0 is not compatible with current JBoss
+      dependency 'concurrent:concurrent:1.3.4' // ReentrantLockImpl. SessionInfoImpl
+      dependency 'regexp:regexp:1.3' // benoetigt von generatePersist
+      dependency 'commons-io:commons-io:2.4' // bei Bernd nicht dabei ... // testCompile
+      dependency 'net.java.dev.jna:jna:4.0.0' // von compile ben�tigt; 4.0.0 war nicht vorhanden
+
+      // persistence
+      dependency 'org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.Final-redhat-3'
+      // generatoren
+      dependency 'org.antlr:antlr:3.5.2'
+      // spring
+      dependency 'org.springframework:spring-context:4.3.4.RELEASE'
+      dependency 'org.springframework:spring-jms:4.3.4.RELEASE'
+      //dependency 'org.springframework:spring-ldap:1.2.1' // LDAPRoleBean
+      dependency 'org.springframework.ldap:spring-ldap-core:2.2.0.RELEASE' // LDAPRoleBean
+      /** TEST COMPILE DEPENDENCIES **/
+      dependency 'junit:junit:4.12' // LoginConfJUnitInterceptor; AbstractMarvincoreTestCase; u.v.m.
+      dependency 'org.powermock:powermock-module-test-mockito-junit4:1.4.10' // testCompile
+      dependency 'org.apache.httpcomponents:httpclient:4.3.3' // testCompile
+      dependency 'org.assertj:assertj-core:3.8.0'
+      /** RUNTIME DEPENDENCIES **/
+      // Datenbank-Treiber, must not be distributed, because projects can choose any dbs, only h2 should be used by anyone for tests
+      // bz:14.12.2015:workaround for component resolution bug... scope for sybase module was testRuntime
+      dependency 'com.h2database:h2:1.3.176'
+      dependency 'org.postgresql:postgresql:9.4-1203-jdbc41'
+      dependency 'com.oracle:ojdbc6:11.2.0.4'
+
+      //beans
+      dependency "org.jboss.eap:wildfly-naming:7.0.7.GA-redhat-3"
+
+    }
+  }
+}
+
+

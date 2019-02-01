@@ -1,0 +1,11 @@
+dependencies {
+  compile 'org.moley.performance:base-tools'
+  compile 'org.moley.performance:marvin-shared' 
+  compile project (':rezept-test-tools')
+  runtime 'org.moley.performance:base-client'
+  runtime 'org.moley.performance:documents-test-server'
+  runtime 'org.moley.performance:stamm-proddaten'
+  runtime project (':rezept-service-beans')
+  runtime project (':rezept-test-junit')
+
+}

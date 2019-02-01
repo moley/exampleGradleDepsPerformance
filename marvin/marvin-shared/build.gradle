@@ -1,0 +1,9 @@
+dependencies {
+  compile 'jfree:jfreechart'
+  compile project(':marvin-model')
+  compile 'org.moley.performance:marvincore-shared'
+  compile 'org.moley.performance:marvincore-service-shared'
+  compile 'org.moley.performance:marvincore-config-shared'
+  compile 'org.moley.performance:marvincore-persist-shared'
+
+}

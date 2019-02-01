@@ -1,0 +1,5 @@
+dependencies {
+  compile project (':documents-test-server')
+  compile project(':documents-test-server')
+  runtime project (':documents-service-beans')
+}

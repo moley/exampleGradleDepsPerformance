@@ -1,0 +1,9 @@
+dependencies {
+  compile project(':marvin-server')
+  compile project(':marvin-beans')
+  compile project(':marvin-html')
+  compile project(':marvin-swing')
+  compile 'commons-logging:commons-logging' 
+  compile 'org.moley.performance:marvincore-dev'
+  compile 'org.moley.performance:marvincore-testutils'
+}

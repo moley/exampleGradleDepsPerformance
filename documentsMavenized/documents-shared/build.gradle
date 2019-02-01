@@ -1,0 +1,4 @@
+dependencies {
+  compile 'org.moley.performance:base-shared'
+  compile project (':documents-model')
+}

@@ -1,0 +1,3 @@
+dependencies {
+  compile project (':marvincore-security:marvincore-security-shared')
+}

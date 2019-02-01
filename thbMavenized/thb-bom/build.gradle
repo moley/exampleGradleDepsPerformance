@@ -1,0 +1,9 @@
+dependencyManagement{
+dependencies {
+  dependency ('org.moley.performance:thb-shared:1.0')
+  dependency ('org.moley.performance:thb-test-tools:1.0')
+  dependency ('org.moley.performance:thb-server:1.0')
+  dependency ('org.moley.performance:thb-service-beans:1.0')
+  dependency ('org.moley.performance:thb-test-server:1.0')
+}
+}

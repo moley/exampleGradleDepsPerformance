@@ -1,0 +1,23 @@
+
+dependencies {
+  compile 'org.moley.performance:marvin-server'
+  compile 'org.moley.performance:marvincore-security-client'
+  compile 'org.moley.performance:marvincore-version'
+  compile 'io.swagger:swagger-core'
+  compile 'io.swagger:swagger-jaxrs'
+  compile 'io.swagger:swagger-models'
+  compile 'javax.ws.rs:javax.ws.rs-api'
+  compile 'org.apache.commons:commons-pool2'
+  compile 'org.jboss.spec.javax.servlet:jboss-servlet-api_3.1_spec'
+  compile 'org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec'
+  compile 'org.springframework:spring-context-support'
+  compile project (':base-shared')
+  compile project(':base-shared')
+  compileOnly 'org.moley.performance:marvincore-config-generator'
+  runtime 'org.moley.performance:bootstrap-ejb-interceptor'
+  runtime 'org.moley.performance:client-ejb-loggingpropagation-interceptor'
+  runtime 'org.moley.performance:client-ejb-security-interceptor'
+  runtime 'org.moley.performance:marvin-beans'
+  runtime 'org.slf4j:slf4j-log4j12'
+}
+

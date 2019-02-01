@@ -1,0 +1,6 @@
+
+dependencies {
+  compile 'org.moley.performance:rezept-shared'
+  compile 'org.moley.performance:thb-shared'
+  compile project (':abrechnung-model')
+}

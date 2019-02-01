@@ -1,0 +1,5 @@
+dependencies {
+    compile 'log4j:log4j'
+    compile project (':marvincore-security:marvincore-security-shared')
+    compile project (':marvincore-security:marvincore-security-server')
+}

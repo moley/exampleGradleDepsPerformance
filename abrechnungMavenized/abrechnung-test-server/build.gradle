@@ -1,0 +1,9 @@
+
+dependencies {
+  compile 'org.moley.performance:rezept-test-server'
+  compile 'org.moley.performance:stamm-test-tools'
+  compile 'org.moley.performance:thb-test-server'
+  compile project (':abrechnung-test-shared')
+  compile project(':abrechnung-server')
+}
+

@@ -1,0 +1,9 @@
+dependencies {
+  compile project (':marvincore-persist:marvincore-persist-generator')
+  compile project (':marvincore-server')
+  compile project (':marvincore-config:marvincore-config-generator')
+  compile 'org.apache.ant:ant'
+  runtime project(':marvincore-dev') 
+  
+}
+

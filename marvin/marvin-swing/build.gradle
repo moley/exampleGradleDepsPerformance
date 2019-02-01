@@ -1,0 +1,8 @@
+dependencies {
+  compile project(':marvin-client')
+  compile 'jfree:jfreechart' 
+  compile 'org.moley.performance:marvincore-config-shared'
+  compile 'org.moley.performance:marvincore-service-shared'
+  compile 'org.moley.performance:marvincore-security-client'
+}
+
